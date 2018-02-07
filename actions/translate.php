@@ -1,22 +1,17 @@
 <?php
-
-/**
- * getLang Découpe $_SERVER['HTTP_ACCEPT_LANGUAGE'] pour obtenir la première
- * langue choisie (uniquement les deux premiers caractères)
- * @return [type] [description]
- */
-include_once('tools/multilang/includes/multilang.func.php');
-
 // test de sécurité pour vérifier si on passe par wiki
 if (!defined('WIKINI_VERSION')) {
-    die('acc&egrave;s direct interdit');
+    die('accès direct interdit');
 }
+
+include_once('tools/multilang/includes/multilang.func.php');
 
 $defaultLang = getDefaultLang();
 $lang = getLang();
 
-// Si le parmètre ref n'est pas déterminé, on tente une redirection vers la
-// version traduite de la page.
+/*******************************************************************************
+ * SANS PARAMETRES
+ */
 //TODO Filtrer le contenu de ref.
 $ref = $this->GetParameter('ref');
 if (empty($ref)) {
@@ -39,14 +34,18 @@ if (empty($ref)) {
     return;
 }
 
-$file = "tools/multilang/lang/$defaultLang.php";
-if (file_exists("tools/multilang/lang/$lang.php")) {
-    $file = "tools/multilang/lang/$lang.php";
+/*******************************************************************************
+ * AVEC PARAMETRES
+ */
+$langFilespath = getLangfilesPath($this);
+$file = "$langFilespath$defaultLang.php";
+if (file_exists("$langFilespath$lang.php")) {
+    $file = "$langFilespath$lang.php";
 }
 include($file);
 
 $text = "No traduction available for '$ref'";
-if (isset($etresTraductions[$ref])) {
-    $text = $etresTraductions[$ref];
+if (isset($translations[$ref])) {
+    $text = $translations[$ref];
 }
 print($text);
