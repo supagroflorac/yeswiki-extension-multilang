@@ -6,8 +6,7 @@
  */
 function getDefaultLang()
 {
-    // TODO : Utiliser le parametre de le configuration
-    return 'en';
+    return $GLOBALS['wiki']->config['default_language'];
 }
 
 /**
