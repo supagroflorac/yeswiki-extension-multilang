@@ -3,15 +3,34 @@ Extension multilang
 
 Permet de gérer un wiki multilingue.
 
+L'action 'flags'
+----------------
+
+Affiche les langues disponible pour le site. Elles sont représentées par le
+drapeau du pays d'origine de la langue. Un clic sur un drapeau force
+l'affichage du site dans cette langue si le contenu a été traduit. Sinon c'est la
+langue par défaut qui est affichée.
+
+L'action 'flags' prend pour paramètre obligatoire 'list'. List doit contenir la
+liste des drapeaux a afficher et donc des langues disponible sur le site.
+
+ex : {{flags list="fr,en,it"}}
+
+La mise en forme de la liste doit être prise en charge par le thème ou pas du
+CSS inclus dans la page.
+Les éléments CSS sont :
+ - ul.flaglist (liste des  drapeaux)
+ - li.selected (langue choisie)
+
+
 L'action 'translate'
 --------------------
 
 L'extension propose une action 'translate' qui prend le paramètre 'ref'
-Sans paramètre l'action n'a aucun effet.
 
 ex : {{translate ref="hat"}}
 
-Si l'action est appelé sans paramètre. Elle ajoute a la fin du nom de la page
+Si l'action est appelé sans paramètre. Elle ajoute à la fin du nom de la page
 les deux caractères de la langue (ex : PagePrincipale devient PagePrincipaleFr)
 Si cette nouvelle page existe, l'utilisateur est automatiquement redirigé vers
 celle-ci. Si elle n'existe pas, que l'utilisateur est connecté et a le droit de

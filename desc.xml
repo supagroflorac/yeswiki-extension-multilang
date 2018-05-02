@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<plugin name="multilang" version="0.2" active="1">
+<plugin name="multilang" version="0.3" active="1">
   <author>Florestan Bredow</author>
   <label>multilang</label>
   <desc>Traduction de l'interface et des pages pour un wiki multilingue</desc>

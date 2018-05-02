@@ -19,6 +19,16 @@ function getLang()
 {
     // cf . https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Language
 
+    if (isset($_COOKIE['MULTILANG_FORCELANG'])
+        and !empty($_COOKIE['MULTILANG_FORCELANG'])
+    ) {
+        return $_COOKIE['MULTILANG_FORCELANG'];
+    }
+
+    if (empty($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
+        return getDefaultLang();
+    }
+
     // Récupère la première lang choisie dans HTTP_ACCEPT_LANGUAGE.
     $lang = trim(explode(',', $_SERVER['HTTP_ACCEPT_LANGUAGE'])[0]);
 

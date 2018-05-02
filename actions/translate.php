@@ -28,7 +28,7 @@ if (empty($ref)) {
         }
 
         if ($this->HasAccess('write', $redirectedPageName)) {
-            print("<a class='tradLink' href='$link/edit'>Traduct it</a>");
+            print("<a class='tradLink' href='$link/edit'>Traduct it</a><br />");
         }
     }
     return;
