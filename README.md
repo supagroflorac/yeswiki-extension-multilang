@@ -12,7 +12,7 @@ l'affichage du site dans cette langue si le contenu a été traduit. Sinon c'est
 langue par défaut qui est affichée.
 
 L'action 'flags' prend pour paramètre obligatoire 'list'. List doit contenir la
-liste des drapeaux a afficher et donc des langues disponible sur le site.
+liste des drapeaux à afficher et donc des langues disponible sur le site.
 
 ex : {{flags list="fr,en,it"}}
 
@@ -26,15 +26,17 @@ Les éléments CSS sont :
 L'action 'translate'
 --------------------
 
-L'extension propose une action 'translate' qui prend le paramètre 'ref'
+**Avec le paramètre 'ref'**
+L'extension propose une action 'translate' qui prend le paramètre 'ref'. (Cf. les fichiers de traduction)
 
 ex : {{translate ref="hat"}}
 
-Si l'action est appelé sans paramètre. Elle ajoute à la fin du nom de la page
+**Sans paramètres**
+Si l'action est appelée sans paramètres. Elle ajoute à la fin du nom de la page
 les deux caractères de la langue (ex : PagePrincipale devient PagePrincipaleFr)
 Si cette nouvelle page existe, l'utilisateur est automatiquement redirigé vers
 celle-ci. Si elle n'existe pas, que l'utilisateur est connecté et a le droit de
-créer cette page alors un bouton est ajouté pour lui proposer de traduire la
+créer cette page alors un lien est ajouté pour lui proposer de traduire la
 page.
 
 ex : {{translate}}
@@ -44,17 +46,27 @@ Les fichiers de traduction
 --------------------------
 
 Le fichiers de traduction doivent être placé dans le dossier du thème dans un
-sous-répertoire 'lang'. Il doit y avoir un fichier par traduction. Le nom de
+sous-répertoire 'lang'. Il doit y avoir un fichier par langue. Le nom de
 chacun de ses fichiers est composé des deux caractères de la langue (ex fr pour
 français, en pour anglais, it pour italien) suivi de l'extension '.php'.
+
+ex : themes/monJoliTheme/lang/fr.php
 
 Ce fichier contient un tableau appelé '$translations'. Dans ce tableau :
  - la clé est l'identifiant de la chaîne de caractères (paramètre ref de
     l'action trad)
  - La valeur, sa traduction dans la langue du fichier
 
-Si le fichier correspondant a la langue demandée n'existe pas, c'est alors
-l'anglais qui est choisis par défaut.
+ex : 
+```php
+<?php
+$translations = array(
+    'BUTTON_SEND' => 'Envoyer',
+    'BUTTON_CANCEL' => 'Annuler',
+);
+```
+Si le fichier correspondant à la langue demandée n'existe pas, c'est alors
+la langue par défaut du wiki qui est choisie par défaut.
 
 Si la clé correspondant a la référence passé en paramètre de l'action n'existe
 pas un message d'erreur apparaît (No traduction available for 'ref').
