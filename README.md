@@ -16,7 +16,7 @@ liste des drapeaux à afficher et donc des langues disponible sur le site.
 
 ex : {{flags list="fr,en,it"}}
 
-La mise en forme de la liste doit être prise en charge par le thème ou pas du
+La mise en forme de la liste doit être prise en charge par le thème ou par du
 CSS inclus dans la page.
 Les éléments CSS sont :
  - ul.flaglist (liste des  drapeaux)
@@ -71,7 +71,7 @@ la langue par défaut du wiki qui est choisie par défaut.
 Si la clé correspondant a la référence passé en paramètre de l'action n'existe
 pas un message d'erreur apparaît (No traduction available for 'ref').
 
-Déterminé la langue
+Déterminer la langue
 -------------------
 
 La langue est déterminé via le paramètre 'HTTP_ACCEPT_LANGUAGE' de $_SERVER.
