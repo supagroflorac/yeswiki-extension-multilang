@@ -43,16 +43,5 @@ function getLang()
 
 function getLangfilesPath($wiki)
 {
-    $langPath = 'tools/template/themes/' . THEME_PAR_DEFAUT;
-
-    if (isset($wiki->config['favorite_theme'])) {
-        $langPath = 'themes/' . $wiki->config['favorite_theme'];
-    }
-
-    if (isset($GLOBALS['wakkaConfig']['favorite_theme'])) {
-        $favTheme = $GLOBALS['wakkaConfig']['favorite_theme'];
-        $langPath = "themes/$favTheme";
-    }
-
-    return $langPath . '/lang/';
+    return 'tools/multilang/';
 }

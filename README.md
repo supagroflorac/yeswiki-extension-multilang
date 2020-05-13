@@ -45,12 +45,12 @@ ex : {{translate}}
 Les fichiers de traduction
 --------------------------
 
-Le fichiers de traduction doivent être placé dans le dossier du thème dans un
-sous-répertoire 'lang'. Il doit y avoir un fichier par langue. Le nom de
-chacun de ses fichiers est composé des deux caractères de la langue (ex fr pour
-français, en pour anglais, it pour italien) suivi de l'extension '.php'.
+Le fichiers de traduction doivent être placé dans le dossier 'tools/multilang'.
+Il doit y avoir un fichier par langue. Le nom de chacun de ces fichiers est 
+composé des deux caractères de la langue (ex fr pour français, en pour anglais, 
+it pour italien) suivi de l'extension '.php'.
 
-ex : themes/monJoliTheme/lang/fr.php
+ex : tools/multilang/fr.php
 
 Ce fichier contient un tableau appelé '$translations'. Dans ce tableau :
  - la clé est l'identifiant de la chaîne de caractères (paramètre ref de
