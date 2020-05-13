@@ -43,5 +43,5 @@ function getLang()
 
 function getLangfilesPath($wiki)
 {
-    return 'tools/multilang/';
+    return 'themes/tools/multilang/';
 }
