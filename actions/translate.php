@@ -14,6 +14,7 @@ $lang = getLang();
  */
 //TODO Filtrer le contenu de ref.
 $ref = $this->GetParameter('ref');
+$link = $this->GetParameter('link');
 if (empty($ref)) {
     $redirectedPageName = $this->tag . ucfirst($lang);
 
@@ -37,6 +38,7 @@ if (empty($ref)) {
 /*******************************************************************************
  * AVEC PARAMETRES
  */
+
 $langFilespath = getLangfilesPath($this);
 $file = "$langFilespath$defaultLang.php";
 if (file_exists("$langFilespath$lang.php")) {
@@ -48,4 +50,11 @@ $text = "No traduction available for '$ref'";
 if (isset($translations[$ref])) {
     $text = $translations[$ref];
 }
+
+// Si un lien est définis.
+if (!empty($link)) {
+    $text = "[[${link} ${text}]]";
+    $text = $this->Format($text, 'wakka');
+} 
+
 print($text);

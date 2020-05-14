@@ -31,6 +31,11 @@ L'extension propose une action 'translate' qui prend le paramètre 'ref'. (Cf. l
 
 ex : {{translate ref="hat"}}
 
+**Avec les paramètres 'ref' et 'link'**
+En ajoutant le paramètre link cela crée un lien. link accepte une URL ou un nom de page YesWiki. Le parametre ref doit être définis pour que "link" soit pris en compte.
+
+ex : {{translate ref="hat" link="HaT"}}
+
 **Sans paramètres**
 Si l'action est appelée sans paramètres. Elle ajoute à la fin du nom de la page
 les deux caractères de la langue (ex : PagePrincipale devient PagePrincipaleFr)
