@@ -15,6 +15,8 @@ $lang = getLang();
 //TODO Filtrer le contenu de ref.
 $ref = $this->GetParameter('ref');
 $link = $this->GetParameter('link');
+$file = $this->GetParameter('file');
+
 if (empty($ref)) {
     $redirectedPageName = $this->tag . ucfirst($lang);
 
@@ -40,11 +42,11 @@ if (empty($ref)) {
  */
 
 $langFilespath = getLangfilesPath($this);
-$file = "$langFilespath$defaultLang.php";
+$langFile = "$langFilespath$defaultLang.php";
 if (file_exists("$langFilespath$lang.php")) {
-    $file = "$langFilespath$lang.php";
+    $langFile = "$langFilespath$lang.php";
 }
-include($file);
+include($langFile);
 
 $text = "No traduction available for '$ref'";
 if (isset($translations[$ref])) {
@@ -52,9 +54,45 @@ if (isset($translations[$ref])) {
 }
 
 // Si un lien est définis.
-if (!empty($link)) {
+if ($link !== "" and  $file === "") {
     $text = "[[${link} ${text}]]";
-    $text = $this->Format($text, 'wakka');
+    print($this->Format($text, 'wakka'));
+    return;
 } 
 
+if ($file !== "") {
+    // Récupère la liste des parametres compatibles avec attach
+    $parameterToGet = array(
+        'nofullimagelink',
+        'class',
+        'size',
+        'width',
+        'height',
+        'legend',
+        'caption',
+        'link',
+    );
+
+    $parameters = "";
+    foreach($parameterToGet as $parameter) {
+        $value = $this->GetParameter($parameter);
+
+        if ($value !== "") {
+            if ($parameter === 'legend' or $parameter === 'caption') {  
+                $valtext = "No traduction available for '$value'";
+                if (isset($translations[$value])) {
+                    $valtext = $translations[$value];
+                }
+                $value = $valtext;
+            }
+            $parameters .= "${parameter}=\"$value\" ";
+        }
+    }
+
+    $text = "{{attach file=\"${file}\" desc=\"${text}\" ${parameters} }}";
+    print($this->Format($text, 'wakka'));
+    return;
+}
+
 print($text);
+

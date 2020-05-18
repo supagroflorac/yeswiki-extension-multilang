@@ -36,6 +36,13 @@ En ajoutant le paramètre link cela crée un lien. link accepte une URL ou un no
 
 ex : {{translate ref="hat" link="HaT"}}
 
+**Avec les paramètres 'ref' et 'file'**
+Permet d'utiliser l'action attach tout en traduisant les textes affichées par 'desc', 'caption' et 'legend'.
+Les paramètres 'nofullimagelink','class','size','width','height','legend','caption','link' sont pris en charge. Le parametre 'ref' remplace le parametre 'desc' de l'action attach.
+Les parametres 'ref', 'caption' et 'legend' doivent faire référence au fichier de traduction.
+
+ex : {{translate ref="hat" file="ma_photo_de_chapeau.jpg" caption="hat"}}
+
 **Sans paramètres**
 Si l'action est appelée sans paramètres. Elle ajoute à la fin du nom de la page
 les deux caractères de la langue (ex : PagePrincipale devient PagePrincipaleFr)
@@ -59,7 +66,7 @@ ex : tools/multilang/fr.php
 
 Ce fichier contient un tableau appelé '$translations'. Dans ce tableau :
  - la clé est l'identifiant de la chaîne de caractères (paramètre ref de
-    l'action trad)
+    l'action transate)
  - La valeur, sa traduction dans la langue du fichier
 
 ex : 
@@ -68,6 +75,7 @@ ex :
 $translations = array(
     'BUTTON_SEND' => 'Envoyer',
     'BUTTON_CANCEL' => 'Annuler',
+    'hat' => 'chapeau',
 );
 ```
 Si le fichier correspondant à la langue demandée n'existe pas, c'est alors
